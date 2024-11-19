@@ -1169,6 +1169,11 @@ out:
 void
 ResetPasswordReveal(HWND edit, HWND btn, WPARAM wParam)
 {
+    SendMessage(edit, EM_SETPASSWORDCHAR, (WPARAM)0x25CF, 0);
+    SendMessage(btn, STM_SETIMAGE, (WPARAM)IMAGE_ICON, (LPARAM)LoadLocalizedSmallIcon(ID_ICO_EYE));
+    ShowWindow(btn, SW_SHOW);
+    return;
+
     if (!edit || !btn)
     {
         return;

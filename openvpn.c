@@ -601,8 +601,8 @@ UserAuthDialogFunc(HWND hwndDlg, UINT msg, WPARAM wParam, LPARAM lParam)
                      * User can interrupt.
                      */
                     SetFocus(GetDlgItem(hwndDlg, IDOK));
-                    UINT timeout = o.silent_connection ? 0 : 6; /* in seconds */
-                    AutoCloseSetup(hwndDlg, IDOK, timeout, ID_TXT_WARNING, IDS_NFO_AUTO_CONNECT);
+//                    UINT timeout = o.silent_connection ? 0 : 6; /* in seconds */
+//                    AutoCloseSetup(hwndDlg, IDOK, timeout, ID_TXT_WARNING, IDS_NFO_AUTO_CONNECT);
                 }
                 /* if auth failed, highlight password so that user can type over */
                 else if (param->c->failed_auth_attempts)
