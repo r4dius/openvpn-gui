@@ -1169,7 +1169,7 @@ out:
 void
 ResetPasswordReveal(HWND edit, HWND btn, WPARAM wParam)
 {
-    SendMessage(edit, EM_SETPASSWORDCHAR, (WPARAM)0x25CF, 0);
+    SendMessage(edit, EM_SETPASSWORDCHAR, (WPARAM)0x2022, 0);
     SendMessage(btn, STM_SETIMAGE, (WPARAM)IMAGE_ICON, (LPARAM)LoadLocalizedSmallIcon(ID_ICO_EYE));
     ShowWindow(btn, SW_SHOW);
     return;
@@ -1186,7 +1186,7 @@ ResetPasswordReveal(HWND edit, HWND btn, WPARAM wParam)
     }
 
     /* set the password field to be masked as a sane default */
-    SendMessage(edit, EM_SETPASSWORDCHAR, (WPARAM)'*', 0);
+    SendMessage(edit, EM_SETPASSWORDCHAR, (WPARAM)0x2022, 0);
     SendMessage(btn, STM_SETIMAGE, (WPARAM) IMAGE_ICON, (LPARAM)LoadLocalizedSmallIcon(ID_ICO_EYE));
 
     /* if password is not masked on init, disable reveal "button" */
@@ -1222,7 +1222,7 @@ ChangePasswordVisibility(HWND edit, HWND btn, WPARAM wParam)
     {
         if (SendMessage(edit, EM_GETPASSWORDCHAR, 0, 0) == 0) /* currently visible */
         {
-            SendMessage(edit, EM_SETPASSWORDCHAR, (WPARAM)'*', 0);
+            SendMessage(edit, EM_SETPASSWORDCHAR, (WPARAM)0x2022, 0);
             SendMessage(btn, STM_SETIMAGE, (WPARAM) IMAGE_ICON, (LPARAM)LoadLocalizedSmallIcon(ID_ICO_EYE));
         }
         else

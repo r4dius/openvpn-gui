@@ -41,6 +41,9 @@ ID_ICO_CONNECTING    ICON  DISCARDABLE  "../res/connecting.ico"
 ID_ICO_DISCONNECTED  ICON  DISCARDABLE  "../res/disconnected.ico"
 ID_ICO_EYE           ICON  DISCARDABLE  "../res/eye.ico"
 ID_ICO_EYESTROKE     ICON  DISCARDABLE  "../res/eye-stroke.ico"
+ID_ICO_CONNECTED_DARK     ICON  DISCARDABLE  "../res/connected_dark.ico"
+ID_ICO_CONNECTING_DARK    ICON  DISCARDABLE  "../res/connecting_dark.ico"
+ID_ICO_DISCONNECTED_DARK  ICON  DISCARDABLE  "../res/disconnected_dark.ico"
 
 IDB_TILE_IMAGE       BITMAP DISCARDABLE "../res/tileimage.bmp"
 

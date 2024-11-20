@@ -505,11 +505,16 @@ ShowTrayIcon()
     ni.hWnd = o.hWnd;
     ni.uFlags = NIF_MESSAGE | NIF_TIP | NIF_ICON;
     ni.uCallbackMessage = WM_NOTIFYICONTRAY;
-    ni.hIcon = LoadLocalizedSmallIcon(ID_ICO_DISCONNECTED);
+    UINT icon_id = IsLightThemeEnabled() ? ID_ICO_DISCONNECTED : ID_ICO_DISCONNECTED_DARK;
+    ni.hIcon = LoadLocalizedSmallIcon(icon_id);
     _tcsncpy(ni.szTip, _T(PACKAGE_NAME), _countof(_T(PACKAGE_NAME)));
-    ni.uVersion = NOTIFYICON_VERSION_4;
+    //ni.uVersion = NOTIFYICON_VERSION_4;
+    ni.uVersion = 0;
 
     Shell_NotifyIcon(NIM_ADD, &ni);
+    Shell_NotifyIcon(NIM_SETVERSION, &ni);
+
+    return;
 
     /* try to set version 4 and a custom tooltip window */
     if (Shell_NotifyIcon(NIM_SETVERSION, &ni))
@@ -551,7 +556,7 @@ SetTrayIcon(conn_state_t state)
     BOOL first_conn;
     UINT icon_id;
     connection_t *cc = NULL; /* a connected config */
-    BOOL dark;
+    BOOL theme_light_system;
 
     _tcsncpy(msg_connected, LoadLocalizedString(IDS_TIP_CONNECTED), _countof(msg_connected));
     _tcsncpy(msg_connecting, LoadLocalizedString(IDS_TIP_CONNECTING), _countof(msg_connecting));
@@ -608,20 +613,15 @@ SetTrayIcon(conn_state_t state)
         _tcsncat(tip_msg, assigned_ip, _countof(tip_msg) - _tcslen(tip_msg) - 1);
     }
 
-    dark = !IsLightThemeEnabled();
-
-    if (dark) icon_id = icon_id = ID_ICO_CONNECTING_DARK;
-    else icon_id = ID_ICO_CONNECTING;
+    icon_id = IsLightThemeEnabled() ? ID_ICO_CONNECTING : ID_ICO_CONNECTING_DARK;
 
     if (state == connected)
     {
-        if (dark) icon_id = ID_ICO_CONNECTED_DARK;
-        else icon_id = ID_ICO_CONNECTED;
+        icon_id = IsLightThemeEnabled() ? ID_ICO_CONNECTED : ID_ICO_CONNECTED_DARK;
     }
     else if (state == disconnected)
     {
-        if (dark) icon_id = ID_ICO_DISCONNECTED_DARK;
-        icon_id = ID_ICO_DISCONNECTED;
+        icon_id = IsLightThemeEnabled() ? ID_ICO_DISCONNECTED : ID_ICO_DISCONNECTED_DARK;
     }
 
     ni.cbSize = sizeof(ni);
@@ -814,21 +814,4 @@ SetMenuStatus(connection_t *c, conn_state_t state)
             EnableMenuItem(hMenuConn[i], IDM_CLEARPASSMENU, MF_GRAYED);
         }
     }
-}
-
-bool IsLightThemeEnabled() {
-    HKEY hKey;
-    DWORD value = 0;
-    DWORD valueSize = sizeof(value);
-
-    if (RegOpenKeyEx(HKEY_CURRENT_USER,
-        L"Software\Microsoft\Windows\CurrentVersion\Themes\Personalize)",
-        0, KEY_READ, &hKey) == ERROR_SUCCESS) {
-        if (RegQueryValueEx(hKey, L"SystemUsesLightTheme", NULL, NULL, (LPBYTE)&value, &valueSize) == ERROR_SUCCESS) {
-            RegCloseKey(hKey);
-            return value == 1;
-        }
-        RegCloseKey(hKey);
-    }
-    return false; // Default to dark if the key cannot be read
 }

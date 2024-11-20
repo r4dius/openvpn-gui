@@ -51,6 +51,7 @@
 #include "echo.h"
 #include "as.h"
 
+
 #define OVPN_EXITCODE_ERROR      1
 #define OVPN_EXITCODE_TIMEOUT    2
 #define OVPN_EXITCODE_NOTREADY   3
@@ -766,9 +767,9 @@ WindowProcedure(HWND hwnd, UINT message, WPARAM wParam, LPARAM lParam)
             break;
 
         case WM_SETTINGCHANGE:
+
             if (lParam && wcscmp((LPCWSTR)lParam, L"ImmersiveColorSet") == 0) {
-                // Theme has changed; re-check the theme
-                ShowTrayIcon();
+                // Theme has changed change tray icon
                 CheckAndSetTrayIcon();
                 break;
             }
@@ -1169,4 +1170,18 @@ LoadAutoRestartList()
         }
         c->auto_connect = true;
     }
+}
+
+bool IsLightThemeEnabled() {
+    HKEY regkey;
+    DWORD value = 0;
+
+    LONG status = RegOpenKeyEx(HKEY_CURRENT_USER, TEXT("Software\\Microsoft\\Windows\\CurrentVersion\\Themes\\Personalize"), 0, KEY_READ, &regkey);
+    if (status == ERROR_SUCCESS)
+    {
+        GetRegistryValueNumeric(regkey, _T("SystemUsesLightTheme"), &value);
+        RegCloseKey(regkey);
+    }
+
+    return (value == 1);
 }

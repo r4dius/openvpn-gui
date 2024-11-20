@@ -39,3 +39,5 @@ plap/credentialprovider.h
 x64
 Debug
 out
+res/resource.h
+res/openvpn-gui-res-test.rc
