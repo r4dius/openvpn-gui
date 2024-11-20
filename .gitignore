@@ -41,3 +41,4 @@ Debug
 out
 res/resource.h
 res/openvpn-gui-res-test.rc
+res/_openvpn-gui-res.rc

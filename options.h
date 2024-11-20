@@ -247,6 +247,7 @@ typedef struct {
     TCHAR *action_arg;
     HANDLE session_semaphore;
     HANDLE event_log;
+    BOOL is_light_theme;
 } options_t;
 
 void InitOptions(options_t *);

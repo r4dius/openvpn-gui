@@ -1637,7 +1637,7 @@ OnByteCount(connection_t *c, char *msg)
     format_bytecount(in, _countof(in), c->bytes_in);
     format_bytecount(out, _countof(out), c->bytes_out);
     SetDlgItemTextW(c->hwndStatus, ID_TXT_BYTECOUNT,
-                    LoadLocalizedString(IDS_NFO_BYTECOUNT, in, out));
+        LoadLocalizedString(IDS_NFO_BYTECOUNT, in, out));
 }
 
 /*
@@ -2186,12 +2186,12 @@ Cleanup(connection_t *c)
 void
 RenderStatusWindow(HWND hwndDlg, UINT w, UINT h)
 {
-    MoveWindow(GetDlgItem(hwndDlg, ID_EDT_LOG), DPI_SCALE(0), DPI_SCALE(25), w, h - DPI_SCALE(110), TRUE);
-    MoveWindow(GetDlgItem(hwndDlg, ID_TXT_STATUS), DPI_SCALE(20), DPI_SCALE(5), w-DPI_SCALE(30), DPI_SCALE(15), TRUE);
-    MoveWindow(GetDlgItem(hwndDlg, ID_TXT_IP), DPI_SCALE(20), h - DPI_SCALE(75), w-DPI_SCALE(30), DPI_SCALE(15), TRUE);
-    MoveWindow(GetDlgItem(hwndDlg, ID_TXT_BYTECOUNT), DPI_SCALE(20), h - DPI_SCALE(55), w-DPI_SCALE(210), DPI_SCALE(15), TRUE);
+    MoveWindow(GetDlgItem(hwndDlg, ID_EDT_LOG), DPI_SCALE(0), DPI_SCALE(0), w, h - DPI_SCALE(110), TRUE);
+    MoveWindow(GetDlgItem(hwndDlg, ID_TXT_STATUS), DPI_SCALE(10), h - DPI_SCALE(90), w-DPI_SCALE(30), DPI_SCALE(15), TRUE);
+    MoveWindow(GetDlgItem(hwndDlg, ID_TXT_IP), DPI_SCALE(10), h - DPI_SCALE(75), w-DPI_SCALE(30), DPI_SCALE(15), TRUE);
+    MoveWindow(GetDlgItem(hwndDlg, ID_TXT_BYTECOUNT), DPI_SCALE(10), h - DPI_SCALE(55), w-DPI_SCALE(210), DPI_SCALE(15), TRUE);
     MoveWindow(GetDlgItem(hwndDlg, ID_TXT_VERSION), w-DPI_SCALE(180), h - DPI_SCALE(55), DPI_SCALE(170), DPI_SCALE(15), TRUE);
-    MoveWindow(GetDlgItem(hwndDlg, ID_DISCONNECT), DPI_SCALE(20), h - DPI_SCALE(30), DPI_SCALE(110), DPI_SCALE(23), TRUE);
+    MoveWindow(GetDlgItem(hwndDlg, ID_DISCONNECT), DPI_SCALE(10), h - DPI_SCALE(30), DPI_SCALE(110), DPI_SCALE(23), TRUE);
     MoveWindow(GetDlgItem(hwndDlg, ID_RESTART), DPI_SCALE(145), h - DPI_SCALE(30), DPI_SCALE(110), DPI_SCALE(23), TRUE);
     MoveWindow(GetDlgItem(hwndDlg, ID_DETACH), DPI_SCALE(270), h - DPI_SCALE(30), DPI_SCALE(110), DPI_SCALE(23), TRUE);
     MoveWindow(GetDlgItem(hwndDlg, ID_HIDE), w - DPI_SCALE(130), h - DPI_SCALE(30), DPI_SCALE(110), DPI_SCALE(23), TRUE);

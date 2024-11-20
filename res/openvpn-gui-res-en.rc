@@ -101,7 +101,7 @@ FONT 8, "Microsoft Sans Serif"
 LANGUAGE LANG_ENGLISH, SUBLANG_DEFAULT
 BEGIN
     LTEXT "Connecting…", ID_TXT_STATUS, 20, 5, 200, 10
-    LTEXT "", ID_TXT_BYTECOUNT, 20, 175, 200, 10
+    LTEXT "", ID_TXT_BYTECOUNT, 20, 175, 200, 10, SS_LEFT
     LTEXT "OpenVPN GUI 11.y.0.0/2.4.x", ID_TXT_VERSION, 220, 175, 150, 10
     LTEXT "", ID_TXT_IP, 20, 160, 300, 10
     PUSHBUTTON "&Disconnect", ID_DISCONNECT, 50, 190, 50, 14
@@ -388,7 +388,7 @@ Please complete the previous authorization dialog."
     IDS_NFO_STATE_CONNECTED "Current State: Connected"
     IDS_NFO_STATE_ONHOLD "Current State: On Hold (disconnected)"
     IDS_NFO_NOW_CONNECTED "%ls is now connected."
-    IDS_NFO_ASSIGN_IP "Assigned IP: %ls"
+    IDS_NFO_ASSIGN_IP " - Assigned IP: %ls"
     IDS_ERR_CERT_EXPIRED "Unable to connect because your certificate has expired or the system time is incorrect."
     IDS_ERR_CERT_NOT_YET_VALID "Unable to connect because your certificate is not yet valid. Check that your system time is correct."
     IDS_NFO_STATE_RECONNECTING "Current State: Reconnecting"

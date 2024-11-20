@@ -83,6 +83,7 @@ __declspec(dllexport) char aslr_workaround;
 
 /* globals */
 static HWND settings_window;   /* Handle of Settings window */
+static bool is_light_theme;
 
 static int
 VerifyAutoConnections()
@@ -299,6 +300,8 @@ _tWinMain(HINSTANCE hThisInstance,
     {
         exit(1);
     }
+
+    o.is_light_theme = IsLightThemeEnabled();
 
     GetProxyRegistrySettings();
 
@@ -767,9 +770,9 @@ WindowProcedure(HWND hwnd, UINT message, WPARAM wParam, LPARAM lParam)
             break;
 
         case WM_SETTINGCHANGE:
-
             if (lParam && wcscmp((LPCWSTR)lParam, L"ImmersiveColorSet") == 0) {
-                // Theme has changed change tray icon
+                /* Theme has changed, change tray icon */
+                o.is_light_theme = IsLightThemeEnabled();
                 CheckAndSetTrayIcon();
                 break;
             }
@@ -1172,6 +1175,9 @@ LoadAutoRestartList()
     }
 }
 
+/*
+ * Check if windows system theme is set to Light
+ */
 bool IsLightThemeEnabled() {
     HKEY regkey;
     DWORD value = 0;

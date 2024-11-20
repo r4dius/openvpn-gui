@@ -505,7 +505,7 @@ ShowTrayIcon()
     ni.hWnd = o.hWnd;
     ni.uFlags = NIF_MESSAGE | NIF_TIP | NIF_ICON;
     ni.uCallbackMessage = WM_NOTIFYICONTRAY;
-    UINT icon_id = IsLightThemeEnabled() ? ID_ICO_DISCONNECTED : ID_ICO_DISCONNECTED_DARK;
+    UINT icon_id = o.is_light_theme ? ID_ICO_DISCONNECTED : ID_ICO_DISCONNECTED_DARK;
     ni.hIcon = LoadLocalizedSmallIcon(icon_id);
     _tcsncpy(ni.szTip, _T(PACKAGE_NAME), _countof(_T(PACKAGE_NAME)));
     //ni.uVersion = NOTIFYICON_VERSION_4;
@@ -613,15 +613,15 @@ SetTrayIcon(conn_state_t state)
         _tcsncat(tip_msg, assigned_ip, _countof(tip_msg) - _tcslen(tip_msg) - 1);
     }
 
-    icon_id = IsLightThemeEnabled() ? ID_ICO_CONNECTING : ID_ICO_CONNECTING_DARK;
+    icon_id = o.is_light_theme ? ID_ICO_CONNECTING : ID_ICO_CONNECTING_DARK;
 
     if (state == connected)
     {
-        icon_id = IsLightThemeEnabled() ? ID_ICO_CONNECTED : ID_ICO_CONNECTED_DARK;
+        icon_id = o.is_light_theme ? ID_ICO_CONNECTED : ID_ICO_CONNECTED_DARK;
     }
     else if (state == disconnected)
     {
-        icon_id = IsLightThemeEnabled() ? ID_ICO_DISCONNECTED : ID_ICO_DISCONNECTED_DARK;
+        icon_id = o.is_light_theme ? ID_ICO_DISCONNECTED : ID_ICO_DISCONNECTED_DARK;
     }
 
     ni.cbSize = sizeof(ni);
