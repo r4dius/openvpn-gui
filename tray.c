@@ -551,6 +551,7 @@ SetTrayIcon(conn_state_t state)
     BOOL first_conn;
     UINT icon_id;
     connection_t *cc = NULL; /* a connected config */
+    BOOL dark;
 
     _tcsncpy(msg_connected, LoadLocalizedString(IDS_TIP_CONNECTED), _countof(msg_connected));
     _tcsncpy(msg_connecting, LoadLocalizedString(IDS_TIP_CONNECTING), _countof(msg_connecting));
@@ -607,13 +608,19 @@ SetTrayIcon(conn_state_t state)
         _tcsncat(tip_msg, assigned_ip, _countof(tip_msg) - _tcslen(tip_msg) - 1);
     }
 
-    icon_id = ID_ICO_CONNECTING;
+    dark = !IsLightThemeEnabled();
+
+    if (dark) icon_id = icon_id = ID_ICO_CONNECTING_DARK;
+    else icon_id = ID_ICO_CONNECTING;
+
     if (state == connected)
     {
-        icon_id = ID_ICO_CONNECTED;
+        if (dark) icon_id = ID_ICO_CONNECTED_DARK;
+        else icon_id = ID_ICO_CONNECTED;
     }
     else if (state == disconnected)
     {
+        if (dark) icon_id = ID_ICO_DISCONNECTED_DARK;
         icon_id = ID_ICO_DISCONNECTED;
     }
 
@@ -807,4 +814,21 @@ SetMenuStatus(connection_t *c, conn_state_t state)
             EnableMenuItem(hMenuConn[i], IDM_CLEARPASSMENU, MF_GRAYED);
         }
     }
+}
+
+bool IsLightThemeEnabled() {
+    HKEY hKey;
+    DWORD value = 0;
+    DWORD valueSize = sizeof(value);
+
+    if (RegOpenKeyEx(HKEY_CURRENT_USER,
+        L"Software\Microsoft\Windows\CurrentVersion\Themes\Personalize)",
+        0, KEY_READ, &hKey) == ERROR_SUCCESS) {
+        if (RegQueryValueEx(hKey, L"SystemUsesLightTheme", NULL, NULL, (LPBYTE)&value, &valueSize) == ERROR_SUCCESS) {
+            RegCloseKey(hKey);
+            return value == 1;
+        }
+        RegCloseKey(hKey);
+    }
+    return false; // Default to dark if the key cannot be read
 }

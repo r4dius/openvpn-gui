@@ -765,6 +765,15 @@ WindowProcedure(HWND hwnd, UINT message, WPARAM wParam, LPARAM lParam)
             }
             break;
 
+        case WM_SETTINGCHANGE:
+            if (lParam && wcscmp((LPCWSTR)lParam, L"ImmersiveColorSet") == 0) {
+                // Theme has changed; re-check the theme
+                ShowTrayIcon();
+                CheckAndSetTrayIcon();
+                break;
+            }
+            break;
+
         default:                /* for messages that we don't deal with */
             if (message == s_uTaskbarRestart)
             {
