@@ -2186,15 +2186,15 @@ Cleanup(connection_t *c)
 void
 RenderStatusWindow(HWND hwndDlg, UINT w, UINT h)
 {
-    MoveWindow(GetDlgItem(hwndDlg, ID_EDT_LOG), DPI_SCALE(0), DPI_SCALE(0), w, h - DPI_SCALE(110), TRUE);
-    MoveWindow(GetDlgItem(hwndDlg, ID_TXT_STATUS), DPI_SCALE(10), h - DPI_SCALE(90), w-DPI_SCALE(30), DPI_SCALE(15), TRUE);
-    MoveWindow(GetDlgItem(hwndDlg, ID_TXT_IP), DPI_SCALE(10), h - DPI_SCALE(75), w-DPI_SCALE(30), DPI_SCALE(15), TRUE);
-    MoveWindow(GetDlgItem(hwndDlg, ID_TXT_BYTECOUNT), DPI_SCALE(10), h - DPI_SCALE(55), w-DPI_SCALE(210), DPI_SCALE(15), TRUE);
-    MoveWindow(GetDlgItem(hwndDlg, ID_TXT_VERSION), w-DPI_SCALE(180), h - DPI_SCALE(55), DPI_SCALE(170), DPI_SCALE(15), TRUE);
-    MoveWindow(GetDlgItem(hwndDlg, ID_DISCONNECT), DPI_SCALE(10), h - DPI_SCALE(30), DPI_SCALE(110), DPI_SCALE(23), TRUE);
-    MoveWindow(GetDlgItem(hwndDlg, ID_RESTART), DPI_SCALE(145), h - DPI_SCALE(30), DPI_SCALE(110), DPI_SCALE(23), TRUE);
-    MoveWindow(GetDlgItem(hwndDlg, ID_DETACH), DPI_SCALE(270), h - DPI_SCALE(30), DPI_SCALE(110), DPI_SCALE(23), TRUE);
-    MoveWindow(GetDlgItem(hwndDlg, ID_HIDE), w - DPI_SCALE(130), h - DPI_SCALE(30), DPI_SCALE(110), DPI_SCALE(23), TRUE);
+    MoveWindow(GetDlgItem(hwndDlg, ID_EDT_LOG), DPI_SCALE(0), DPI_SCALE(0), w, h - DPI_SCALE(90), TRUE);
+    MoveWindow(GetDlgItem(hwndDlg, ID_TXT_STATUS), DPI_SCALE(10), h - DPI_SCALE(80), w-DPI_SCALE(185), DPI_SCALE(15), TRUE);
+    MoveWindow(GetDlgItem(hwndDlg, ID_TXT_VERSION), w-DPI_SCALE(185), h - DPI_SCALE(80), DPI_SCALE(175), DPI_SCALE(15), TRUE);
+    MoveWindow(GetDlgItem(hwndDlg, ID_TXT_IP), w - DPI_SCALE(185), h - DPI_SCALE(60), DPI_SCALE(175), DPI_SCALE(15), TRUE);
+    MoveWindow(GetDlgItem(hwndDlg, ID_TXT_BYTECOUNT), DPI_SCALE(10), h - DPI_SCALE(60), w - DPI_SCALE(210), DPI_SCALE(15), TRUE);
+    MoveWindow(GetDlgItem(hwndDlg, ID_DISCONNECT), DPI_SCALE(9), h - DPI_SCALE(33), DPI_SCALE(100), DPI_SCALE(23), TRUE);
+    MoveWindow(GetDlgItem(hwndDlg, ID_RESTART), DPI_SCALE(119), h - DPI_SCALE(33), DPI_SCALE(100), DPI_SCALE(23), TRUE);
+    MoveWindow(GetDlgItem(hwndDlg, ID_DETACH), DPI_SCALE(229), h - DPI_SCALE(33), DPI_SCALE(100), DPI_SCALE(23), TRUE);
+    MoveWindow(GetDlgItem(hwndDlg, ID_HIDE), w - DPI_SCALE(109), h - DPI_SCALE(33), DPI_SCALE(100), DPI_SCALE(23), TRUE);
 }
 
 /*
