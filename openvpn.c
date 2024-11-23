@@ -713,7 +713,7 @@ UserAuthDialogFunc(HWND hwndDlg, UINT msg, WPARAM wParam, LPARAM lParam)
                         if (param->flags & FLAG_CR_TYPE_CONCAT)
                         {
                             if (o.auth_pass_concat_otp == 1) {
-                                /* Append to password* /
+                                /* Append to password */
                                 GetDlgItemTextW(hwndDlg, ID_EDT_AUTH_CHALLENGE, password + wcslen(password), _countof(password) - wcslen(password));
                             }
                             else {
