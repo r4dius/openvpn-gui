@@ -179,9 +179,9 @@ BEGIN
     AUTOCHECKBOX "Enable Pre-Logon A&ccess Provider (requires admin access)", ID_CHK_PLAP_REG, 17, 215, 200, 10
     AUTOCHECKBOX "Enable auto restart of active connections", ID_CHK_AUTO_RESTART, 17, 230, 200, 10
     LTEXT "Prompt for &OTP and combine with password", ID_TXT_CONCAT_OTP, 17, 245, 200, 10
-    AUTORADIOBUTTON "Append", ID_RB_CONCAT_OTP, 28, 260, 50, 10
-    AUTORADIOBUTTON "Prepend", ID_RB_PREPEND_OTP, 86, 260, 90, 10
-    AUTORADIOBUTTON "&Disable", ID_RB_DISABLE_OTP, 181, 260, 40, 10
+    AUTORADIOBUTTON "Append OTP", ID_RB_APPEND_OTP, 28, 260, 55, 10
+    AUTORADIOBUTTON "Prepend OTP", ID_RB_PREPEND_OTP, 86, 260, 90, 10
+    AUTORADIOBUTTON "Disable", ID_RB_DISABLE_OTP, 181, 260, 40, 10
 END
 
 /* Advanced Dialog */

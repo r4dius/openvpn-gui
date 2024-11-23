@@ -125,7 +125,7 @@
 #define ID_CHK_PLAP_REG                  248
 #define ID_CHK_AUTO_RESTART              249
 #define ID_TXT_CONCAT_OTP                470
-#define ID_RB_CONCAT_OTP                 471
+#define ID_RB_APPEND_OTP                 471
 #define ID_RB_PREPEND_OTP                472
 #define ID_RB_DISABLE_OTP                473
 
