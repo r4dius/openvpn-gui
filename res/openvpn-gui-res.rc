@@ -47,7 +47,7 @@ ID_ICO_DISCONNECTED_DARK  ICON  DISCARDABLE  "disconnected_dark.ico"
 #ifdef ENABLE_OVPN3
 #define ADVANCED_DIALOG_HEIGHT 320
 #else
-#define ADVANCED_DIALOG_HEIGHT 280
+#define ADVANCED_DIALOG_HEIGHT 272
 #endif
 
 #include "openvpn-gui-res-cs.rc"

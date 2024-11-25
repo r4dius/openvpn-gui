@@ -567,6 +567,34 @@ GeneralSettingsDlgProc(HWND hwndDlg, UINT msg, UNUSED WPARAM wParam, LPARAM lPar
     {
 
         case WM_INITDIALOG:
+            RECT rect;
+            GetWindowRect(hwndDlg, &rect);
+            /* Loosing time moving stuff */
+            MoveWindow(GetDlgItem(hwndDlg, ID_GROUPBOX1), DPI_SCALE(7), DPI_SCALE(3), DPI_SCALE(362), DPI_SCALE(50), TRUE);
+            MoveWindow(GetDlgItem(hwndDlg, ID_TXT_LANGUAGE), DPI_SCALE(23), DPI_SCALE(24), DPI_SCALE(60), DPI_SCALE(15), TRUE);
+            MoveWindow(GetDlgItem(hwndDlg, ID_CMB_LANGUAGE), DPI_SCALE(88), DPI_SCALE(20), DPI_SCALE(270), DPI_SCALE(50), TRUE);
+            MoveWindow(GetDlgItem(hwndDlg, ID_GROUPBOX2), DPI_SCALE(7), DPI_SCALE(56), DPI_SCALE(362), DPI_SCALE(50), TRUE);
+            MoveWindow(GetDlgItem(hwndDlg, ID_CHK_STARTUP), DPI_SCALE(23), DPI_SCALE(76), DPI_SCALE(330), DPI_SCALE(15), TRUE);
+            MoveWindow(GetDlgItem(hwndDlg, ID_GROUPBOX3), DPI_SCALE(7), DPI_SCALE(109), DPI_SCALE(362), DPI_SCALE(325), TRUE);
+            MoveWindow(GetDlgItem(hwndDlg, ID_CHK_LOG_APPEND), DPI_SCALE(23), DPI_SCALE(129), DPI_SCALE(330), DPI_SCALE(15), TRUE);
+            MoveWindow(GetDlgItem(hwndDlg, ID_CHK_SHOW_SCRIPT_WIN), DPI_SCALE(23), DPI_SCALE(154), DPI_SCALE(330), DPI_SCALE(15), TRUE);
+            MoveWindow(GetDlgItem(hwndDlg, ID_CHK_SILENT), DPI_SCALE(23), DPI_SCALE(179), DPI_SCALE(330), DPI_SCALE(15), TRUE);
+            MoveWindow(GetDlgItem(hwndDlg, ID_CHK_ALWAYS_USE_ISERVICE), DPI_SCALE(23), DPI_SCALE(204), DPI_SCALE(330), DPI_SCALE(15), TRUE);
+            MoveWindow(GetDlgItem(hwndDlg, ID_TXT_BALLOON), DPI_SCALE(23), DPI_SCALE(230), DPI_SCALE(330), DPI_SCALE(15), TRUE);
+            MoveWindow(GetDlgItem(hwndDlg, ID_RB_BALLOON1), DPI_SCALE(36), DPI_SCALE(254), DPI_SCALE(100), DPI_SCALE(15), TRUE);
+            MoveWindow(GetDlgItem(hwndDlg, ID_RB_BALLOON2), DPI_SCALE(146), DPI_SCALE(254), DPI_SCALE(100), DPI_SCALE(15), TRUE);
+            MoveWindow(GetDlgItem(hwndDlg, ID_RB_BALLOON0), DPI_SCALE(256), DPI_SCALE(254), DPI_SCALE(100), DPI_SCALE(15), TRUE);
+            MoveWindow(GetDlgItem(hwndDlg, ID_TXT_PERSISTENT), DPI_SCALE(23), DPI_SCALE(280), DPI_SCALE(330), DPI_SCALE(15), TRUE);
+            MoveWindow(GetDlgItem(hwndDlg, ID_RB_BALLOON3), DPI_SCALE(36), DPI_SCALE(304), DPI_SCALE(100), DPI_SCALE(15), TRUE);
+            MoveWindow(GetDlgItem(hwndDlg, ID_RB_BALLOON4), DPI_SCALE(146), DPI_SCALE(304), DPI_SCALE(100), DPI_SCALE(15), TRUE);
+            MoveWindow(GetDlgItem(hwndDlg, ID_RB_BALLOON5), DPI_SCALE(256), DPI_SCALE(304), DPI_SCALE(100), DPI_SCALE(15), TRUE);
+            MoveWindow(GetDlgItem(hwndDlg, ID_CHK_PLAP_REG), DPI_SCALE(23), DPI_SCALE(329), DPI_SCALE(330), DPI_SCALE(15), TRUE);
+            MoveWindow(GetDlgItem(hwndDlg, ID_CHK_AUTO_RESTART), DPI_SCALE(23), DPI_SCALE(354), DPI_SCALE(330), DPI_SCALE(15), TRUE);
+            MoveWindow(GetDlgItem(hwndDlg, ID_TXT_CONCAT_OTP), DPI_SCALE(23), DPI_SCALE(380), DPI_SCALE(330), DPI_SCALE(15), TRUE);
+            MoveWindow(GetDlgItem(hwndDlg, ID_RB_APPEND_OTP), DPI_SCALE(36), DPI_SCALE(404), DPI_SCALE(100), DPI_SCALE(15), TRUE);
+            MoveWindow(GetDlgItem(hwndDlg, ID_RB_PREPEND_OTP), DPI_SCALE(146), DPI_SCALE(404), DPI_SCALE(100), DPI_SCALE(15), TRUE);
+            MoveWindow(GetDlgItem(hwndDlg, ID_RB_DISABLE_OTP), DPI_SCALE(256), DPI_SCALE(404), DPI_SCALE(100), DPI_SCALE(15), TRUE);
+
             /* Populate UI language selection combo box */
             EnumResourceLanguages( NULL, RT_STRING, MAKEINTRESOURCE(IDS_LANGUAGE_NAME / 16 + 1),
                                    (ENUMRESLANGPROC) FillLangListProc, (LONG_PTR) &langData );

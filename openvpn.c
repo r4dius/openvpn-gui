@@ -2194,15 +2194,15 @@ Cleanup(connection_t *c)
 void
 RenderStatusWindow(HWND hwndDlg, UINT w, UINT h)
 {
-    MoveWindow(GetDlgItem(hwndDlg, ID_EDT_LOG), DPI_SCALE(0), DPI_SCALE(0), w, h - DPI_SCALE(90), TRUE);
-    MoveWindow(GetDlgItem(hwndDlg, ID_TXT_STATUS), DPI_SCALE(10), h - DPI_SCALE(80), w-DPI_SCALE(185), DPI_SCALE(15), TRUE);
-    MoveWindow(GetDlgItem(hwndDlg, ID_TXT_VERSION), w-DPI_SCALE(185), h - DPI_SCALE(80), DPI_SCALE(175), DPI_SCALE(15), TRUE);
-    MoveWindow(GetDlgItem(hwndDlg, ID_TXT_IP), w - DPI_SCALE(185), h - DPI_SCALE(60), DPI_SCALE(175), DPI_SCALE(15), TRUE);
-    MoveWindow(GetDlgItem(hwndDlg, ID_TXT_BYTECOUNT), DPI_SCALE(10), h - DPI_SCALE(60), w - DPI_SCALE(210), DPI_SCALE(15), TRUE);
-    MoveWindow(GetDlgItem(hwndDlg, ID_DISCONNECT), DPI_SCALE(9), h - DPI_SCALE(33), DPI_SCALE(100), DPI_SCALE(23), TRUE);
-    MoveWindow(GetDlgItem(hwndDlg, ID_RESTART), DPI_SCALE(119), h - DPI_SCALE(33), DPI_SCALE(100), DPI_SCALE(23), TRUE);
-    MoveWindow(GetDlgItem(hwndDlg, ID_DETACH), DPI_SCALE(229), h - DPI_SCALE(33), DPI_SCALE(100), DPI_SCALE(23), TRUE);
-    MoveWindow(GetDlgItem(hwndDlg, ID_HIDE), w - DPI_SCALE(109), h - DPI_SCALE(33), DPI_SCALE(100), DPI_SCALE(23), TRUE);
+    MoveWindow(GetDlgItem(hwndDlg, ID_EDT_LOG), DPI_SCALE(-1), DPI_SCALE(0), w+2, h - DPI_SCALE(90), TRUE);
+    MoveWindow(GetDlgItem(hwndDlg, ID_TXT_STATUS), DPI_SCALE(10), h - DPI_SCALE(73), w-DPI_SCALE(185), DPI_SCALE(15), TRUE);
+    MoveWindow(GetDlgItem(hwndDlg, ID_TXT_VERSION), w - DPI_SCALE(185), h - DPI_SCALE(73), DPI_SCALE(175), DPI_SCALE(15), TRUE);
+    MoveWindow(GetDlgItem(hwndDlg, ID_TXT_BYTECOUNT), DPI_SCALE(10), h - DPI_SCALE(54), w - DPI_SCALE(210), DPI_SCALE(15), TRUE);
+    MoveWindow(GetDlgItem(hwndDlg, ID_TXT_IP), w - DPI_SCALE(185), h - DPI_SCALE(54), DPI_SCALE(175), DPI_SCALE(15), TRUE);
+    MoveWindow(GetDlgItem(hwndDlg, ID_DISCONNECT), DPI_SCALE(9), h - DPI_SCALE(34), DPI_SCALE(85), DPI_SCALE(25), TRUE);
+    MoveWindow(GetDlgItem(hwndDlg, ID_RESTART), DPI_SCALE(102), h - DPI_SCALE(34), DPI_SCALE(85), DPI_SCALE(25), TRUE);
+    MoveWindow(GetDlgItem(hwndDlg, ID_DETACH), DPI_SCALE(195), h - DPI_SCALE(34), DPI_SCALE(85), DPI_SCALE(25), TRUE);
+    MoveWindow(GetDlgItem(hwndDlg, ID_HIDE), w - DPI_SCALE(94), h - DPI_SCALE(34), DPI_SCALE(85), DPI_SCALE(25), TRUE);
 }
 
 /*
@@ -2241,6 +2241,7 @@ StatusDialogFunc(HWND hwndDlg, UINT msg, WPARAM wParam, LPARAM lParam)
                                           WS_CHILD|WS_VISIBLE|WS_HSCROLL|WS_VSCROLL|ES_LEFT
                                           |ES_MULTILINE|ES_READONLY|ES_AUTOHSCROLL|ES_AUTOVSCROLL,
                                           20, 25, 350, 160, hwndDlg, (HMENU) ID_EDT_LOG, o.hInstance, NULL);
+
             if (!hLogWnd)
             {
                 ShowLocalizedMsgEx(MB_OK|MB_ICONERROR, c->hwndStatus, TEXT(PACKAGE_NAME), IDS_ERR_CREATE_EDIT_LOGWINDOW);
@@ -2248,6 +2249,12 @@ StatusDialogFunc(HWND hwndDlg, UINT msg, WPARAM wParam, LPARAM lParam)
                 StopOpenVPN(c);
                 return FALSE;
             }
+
+            /* Add some padding */
+            RECT rc;
+            GetClientRect(hLogWnd, &rc);
+            InflateRect(&rc, -9, -9);
+            SendMessage(hLogWnd, EM_SETRECT, 0, (LPARAM)&rc);
 
             /* Set font and fontsize of the log window */
             CHARFORMAT cfm = {

@@ -53,6 +53,20 @@ ProxySettingsDialogFunc(HWND hwndDlg, UINT msg, WPARAM wParam, UNUSED LPARAM lPa
     switch (msg)
     {
         case WM_INITDIALOG:
+            RECT rect;
+            GetWindowRect(hwndDlg, &rect);
+            /* Loosing time moving stuff */
+            MoveWindow(GetDlgItem(hwndDlg, ID_RB_PROXY_OPENVPN), DPI_SCALE(16), DPI_SCALE(13), DPI_SCALE(362), DPI_SCALE(15), TRUE);
+            MoveWindow(GetDlgItem(hwndDlg, ID_RB_PROXY_MSIE), DPI_SCALE(16), DPI_SCALE(37), DPI_SCALE(362), DPI_SCALE(15), TRUE);
+            MoveWindow(GetDlgItem(hwndDlg, ID_GROUPBOX1), DPI_SCALE(7), DPI_SCALE(62), DPI_SCALE(362), DPI_SCALE(74), TRUE);
+            MoveWindow(GetDlgItem(hwndDlg, ID_RB_PROXY_MANUAL), DPI_SCALE(16), DPI_SCALE(61), DPI_SCALE(117), DPI_SCALE(15), TRUE);
+            MoveWindow(GetDlgItem(hwndDlg, ID_RB_PROXY_HTTP), DPI_SCALE(23), DPI_SCALE(82), DPI_SCALE(100), DPI_SCALE(15), TRUE);
+            MoveWindow(GetDlgItem(hwndDlg, ID_RB_PROXY_SOCKS), DPI_SCALE(133), DPI_SCALE(82), DPI_SCALE(100), DPI_SCALE(15), TRUE);
+            MoveWindow(GetDlgItem(hwndDlg, ID_TXT_PROXY_ADDRESS), DPI_SCALE(23), DPI_SCALE(107), DPI_SCALE(45), DPI_SCALE(15), TRUE);
+            MoveWindow(GetDlgItem(hwndDlg, ID_EDT_PROXY_ADDRESS), DPI_SCALE(69), DPI_SCALE(103), DPI_SCALE(203), DPI_SCALE(21), TRUE);
+            MoveWindow(GetDlgItem(hwndDlg, ID_TXT_PROXY_PORT), DPI_SCALE(272), DPI_SCALE(107), DPI_SCALE(30), DPI_SCALE(15), TRUE);
+            MoveWindow(GetDlgItem(hwndDlg, ID_EDT_PROXY_PORT), DPI_SCALE(308), DPI_SCALE(103), DPI_SCALE(50), DPI_SCALE(21), TRUE);
+
             hIcon = LoadLocalizedIcon(ID_ICO_APP);
             if (hIcon)
             {
