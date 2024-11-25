@@ -2194,7 +2194,7 @@ Cleanup(connection_t *c)
 void
 RenderStatusWindow(HWND hwndDlg, UINT w, UINT h)
 {
-    MoveWindow(GetDlgItem(hwndDlg, ID_EDT_LOG), DPI_SCALE(-1), DPI_SCALE(0), w+2, h - DPI_SCALE(90), TRUE);
+    MoveWindow(GetDlgItem(hwndDlg, ID_EDT_LOG), DPI_SCALE(-1), DPI_SCALE(0), w+2, h - DPI_SCALE(81), TRUE);
     MoveWindow(GetDlgItem(hwndDlg, ID_TXT_STATUS), DPI_SCALE(10), h - DPI_SCALE(73), w-DPI_SCALE(185), DPI_SCALE(15), TRUE);
     MoveWindow(GetDlgItem(hwndDlg, ID_TXT_VERSION), w - DPI_SCALE(185), h - DPI_SCALE(73), DPI_SCALE(175), DPI_SCALE(15), TRUE);
     MoveWindow(GetDlgItem(hwndDlg, ID_TXT_BYTECOUNT), DPI_SCALE(10), h - DPI_SCALE(54), w - DPI_SCALE(210), DPI_SCALE(15), TRUE);
