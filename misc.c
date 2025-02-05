@@ -1186,7 +1186,7 @@ ResetPasswordReveal(HWND edit, HWND btn, WPARAM wParam)
     }
 
     /* set the password field to be masked as a sane default */
-    SendMessage(edit, EM_SETPASSWORDCHAR, (WPARAM)0x2022, 0);
+    SendMessage(edit, EM_SETPASSWORDCHAR, (WPARAM)'*', 0);
     SendMessage(btn, STM_SETIMAGE, (WPARAM) IMAGE_ICON, (LPARAM)LoadLocalizedSmallIcon(ID_ICO_EYE));
 
     /* if password is not masked on init, disable reveal "button" */

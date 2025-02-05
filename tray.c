@@ -614,7 +614,6 @@ SetTrayIcon(conn_state_t state)
     }
 
     icon_id = o.is_light_theme ? ID_ICO_CONNECTING : ID_ICO_CONNECTING_DARK;
-
     if (state == connected)
     {
         icon_id = o.is_light_theme ? ID_ICO_CONNECTED : ID_ICO_CONNECTED_DARK;

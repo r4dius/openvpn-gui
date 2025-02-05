@@ -51,7 +51,6 @@
 #include "echo.h"
 #include "as.h"
 
-
 #define OVPN_EXITCODE_ERROR      1
 #define OVPN_EXITCODE_TIMEOUT    2
 #define OVPN_EXITCODE_NOTREADY   3
@@ -302,7 +301,6 @@ _tWinMain(HINSTANCE hThisInstance,
     }
 
     o.is_light_theme = IsLightThemeEnabled();
-
     GetProxyRegistrySettings();
 
     /* The Window structure */

@@ -173,6 +173,10 @@
 #define ID_LVW_PKCS11                    451
 #define ID_TXT_PKCS11                    452
 
+/* General settings contd.. */
+
+#define ID_CHK_CONCAT_OTP                470
+
 /*
  * String Table Resources
  */
